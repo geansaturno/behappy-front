@@ -2,7 +2,7 @@ import React from 'react'
 import './img/logo.png'
 import './style.scss'
 
-export default function Header() {
+function Header() {
     return (
         <div className="header pure-menu pure-menu-horizontal pure-menu-fixed">
             <a href="/">
@@ -13,3 +13,5 @@ export default function Header() {
         </div>
     )
 }
+
+export default Header
