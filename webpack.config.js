@@ -4,6 +4,7 @@ const path = require('path')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const MiniCSSExtract = require('mini-css-extract-plugin')
+const CssMinify = require('css-minimizer-webpack-plugin')
 
 const isProd = process.env.NODE_ENV === 'prod'
 
@@ -22,6 +23,16 @@ if (isProd) {
     plugins.push(new BundleAnalyzerPlugin({
         analyzerMode: 'static',
         openAnalyzer: false
+    }))
+    plugins.push(new CssMinify({
+        minimizerOptions: {
+            preset: [
+                'default',
+                {
+                    discardComments: { removeAll: true }
+                }
+            ]
+        }
     }))
 }
 
@@ -55,12 +66,19 @@ module.exports = {
                 }
             },
             {
-                test: /.css$/,
+                test: /\.s[ac]ss$/i,
                 use: [
-                    MiniCSSExtract.loader, 'css-loader'
+                    "sass-loader",
+                ]
+            },
+            {
+                test: /.css$/i,
+                use: [
+                    MiniCSSExtract.loader,
+                    "css-loader"
                 ]
             }
-        ],
+        ]
     },
     devServer: {
         publicPath: '/',
