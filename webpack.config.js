@@ -1,10 +1,11 @@
-const wp = require('webpack')
+// const wp = require('webpack')
 const path = require('path')
 
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const MiniCSSExtract = require('mini-css-extract-plugin')
 const CssMinify = require('css-minimizer-webpack-plugin')
+// const Eslint = require('eslint-webpack-plugin')
 
 const isProd = process.env.NODE_ENV === 'prod'
 
@@ -16,7 +17,8 @@ const plugins = [
     new MiniCSSExtract({
         filename: '[name].css',
         chunkFilename: '[id].css'
-    }),
+    })
+    // new Eslint()
 ]
 
 if (isProd) {
@@ -47,7 +49,8 @@ module.exports = {
     },
     mode: isProd ? 'production' : 'development',
     module: {
-        rules: [{
+        rules: [
+            {
                 test: /.jsx?$/,
                 exclude: /node_modules/,
                 include: path.join(__dirname, 'src'),
@@ -66,16 +69,16 @@ module.exports = {
                 }
             },
             {
-                test: /\.s[ac]ss$/i,
-                use: [
-                    "sass-loader",
-                ]
-            },
-            {
                 test: /.css$/i,
                 use: [
                     MiniCSSExtract.loader,
-                    "css-loader"
+                    'css-loader'
+                ]
+            },
+            {
+                test: /\.s[ac]ss$/i,
+                use: [
+                    'sass-loader'
                 ]
             }
         ]
@@ -86,6 +89,6 @@ module.exports = {
     },
     plugins: plugins,
     optimization: {
-        minimize: isProd,
+        minimize: isProd
     }
 }

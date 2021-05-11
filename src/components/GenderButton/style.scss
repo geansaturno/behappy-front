@@ -1,0 +1,21 @@
+.gender-button {
+    box-sizing: border-box;
+    width: 180px;
+    height: 180px;
+    border-radius: 10px;
+    margin: 3px;
+    padding-top: 5px;
+    display: inline-block;
+
+    &:hover {
+        background-color: #bdbdbd;
+    }
+
+    &--selected {
+        background-color: #00C853;
+
+        &:hover {
+            background-color: #00C853;
+        }
+    }
+}

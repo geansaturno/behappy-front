@@ -8,7 +8,6 @@ export default class App extends React.Component {
             <div>
                 <Header/>
                 <NovoUsuario/>
-                <h1> Bem vindo ao react</h1>
             </div>
         )
     }
