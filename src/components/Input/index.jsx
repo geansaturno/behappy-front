@@ -2,7 +2,7 @@ import React from 'react'
 
 function Input (props) {
     const estilo = {
-        borderColor: props.isInvalid ? '#d50000' : '#d50000',
+        borderColor: props.isInvalid ? '#d50000' : '#eeeee',
         backgroundColor: props.isInvalid ? '#ffcdd2' : '#ffffff'
     }
 

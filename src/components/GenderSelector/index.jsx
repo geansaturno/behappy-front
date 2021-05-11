@@ -3,7 +3,7 @@ import GenderButton from '../GenderButton'
 
 function GenderSelector (props) {
     const male = props.gender === 'm'
-    const female = !male
+    const female = props.gender === 'f'
 
     const color = props.isValid ? '#d50000' : '#cccccc'
     const style = {
